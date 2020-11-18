@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.gitalive.myapplication.ui.home.HomeFragment"
+        android:label="@string/menu_map"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.gitalive.myapplication.ui.bbs.GalleryFragment"
+        android:label="@string/menu_bbs"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.gitalive.myapplication.ui.wiki.SlideshowFragment"
+        android:label="@string/menu_wiki"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.gitalive.myapplication.ui.about.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/nav_web"
+        android:name="com.gitalive.myapplication.ui.web.WebFragment"
+        android:label="@string/menu_web"
+        tools:layout="@layout/web_fragment" />
+    <fragment
+        android:id="@+id/nav_bing"
+        android:name="com.gitalive.myapplication.ui.bing.BingFragment"
+        android:label="@string/menu_bing"
+        tools:layout="@layout/fragment_bing" />
+</navigation>
