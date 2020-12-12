@@ -16,10 +16,7 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_wiki"
             android:title="@string/menu_wiki" />
-        <item
-            android:id="@+id/nav_bing"
-            android:icon="@drawable/ic_menu_bing"
-            android:title="@string/menu_bing" />
+
         <item
             android:id="@+id/nav_web"
             android:icon="@drawable/ic_menu_site"

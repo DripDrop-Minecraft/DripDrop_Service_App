@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:configChanges="orientation|keyboardHidden|screenSize"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.wiki.SlideshowFragment">
 
     <com.gitalive.isat.ui.WebViewLayout
         android:layout_width="match_parent"
