@@ -4,6 +4,7 @@
     package="com.gitalive.isat">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,9 +15,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/Splash"
             tools:ignore="LockedOrientationActivity">

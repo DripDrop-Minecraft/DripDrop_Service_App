@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.gitalive.isat.ui.wiki.SlideshowFragment"
+        android:name="com.gitalive.isat.ui.wiki.WikiFragment"
         android:label="@string/menu_wiki"
         tools:layout="@layout/fragment_wiki" />
     <fragment

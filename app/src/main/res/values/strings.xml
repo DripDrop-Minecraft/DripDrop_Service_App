@@ -18,5 +18,7 @@
     <string name="version">Version: 3.1.0</string>
     <string name="extend">extend</string>
     <string name="update_message">1.移除必应搜索；\n2.加入物品维基；\n3.修复部分bug。</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
