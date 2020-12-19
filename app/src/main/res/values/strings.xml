@@ -4,9 +4,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_version">3.1.0</string>
-    <string name="action_refresh">打开主页</string>
-    <string name="action_forward">前往下一页</string>
-    <string name="action_back">返回上一页</string>
 
     <string name="menu_map">实时地图</string>
     <string name="menu_bbs">中文论坛</string>
@@ -18,7 +15,13 @@
     <string name="version">Version: 3.1.0</string>
     <string name="extend">extend</string>
     <string name="update_message">1.移除必应搜索；\n2.加入物品维基；\n3.修复部分bug。</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="bbs_url">https://www.mcbbs.net/</string>
+    <string name="map_url">http://txyminecraft.club:8123/</string>
+    <string name="web_url">http://neverlag.gitee.io/minecraft-wiki/#/</string>
+    <string name="wiki_url">https://minecraft-zh.gamepedia.com/Minecraft_Wiki</string>
+    <string name="bbs_name">BBS</string>
+    <string name="map_name">Map</string>
+    <string name="web_name">Web</string>
+    <string name="wiki_name">Wiki</string>
 </resources>

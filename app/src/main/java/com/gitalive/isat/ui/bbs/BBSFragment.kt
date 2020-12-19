@@ -10,20 +10,19 @@ import com.gitalive.isat.R
 import kotlinx.android.synthetic.main.fragment_bbs.*
 
 class GalleryFragment : BaseFragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        androidViewModel = BBSAndroidViewModel(requireActivity().application)
+        viewModelConfig(R.string.bbs_name, resources.getString(R.string.bbs_url))
         return inflater.inflate(R.layout.fragment_bbs, container, false)
     }
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val url = "http://www.mcbbs.net/"
-        webViewConfig(bbswebView, url)
-        fabConfig(bbsfab, url, bbswebView)
+        controllers(bbswebView, bbsfab)
     }
 }

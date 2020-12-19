@@ -14,14 +14,14 @@ class WebFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        androidViewModel = WebAndroidViewModel(requireActivity().application)
+        viewModelConfig(R.string.web_name, resources.getString(R.string.web_url))
         return inflater.inflate(R.layout.fragment_web, container, false)
     }
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val url = "http://neverlag.gitee.io/minecraft-wiki/#/"
-        webViewConfig(webwebView, url)
-        fabConfig(webfab, url, webwebView)
+        controllers(webwebView, webfab)
     }
 }

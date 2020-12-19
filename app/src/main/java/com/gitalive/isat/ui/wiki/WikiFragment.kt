@@ -16,14 +16,14 @@ class WikiFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        androidViewModel = WikiAndroidViewModel(requireActivity().application)
+        viewModelConfig(R.string.wiki_name, resources.getString(R.string.wiki_url))
         return inflater.inflate(R.layout.fragment_wiki, container, false)
     }
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val url = "https://minecraft-zh.gamepedia.com/Minecraft_Wiki"
-        webViewConfig(wikiwebView, url)
-        fabConfig(wikifab, url, wikiwebView)
+        controllers(wikiwebView, wikifab)
     }
 }

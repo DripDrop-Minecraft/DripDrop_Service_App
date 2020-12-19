@@ -15,16 +15,16 @@ class MapFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        androidViewModel = MapAndroidViewModel(requireActivity().application)
+        viewModelConfig(R.string.map_name, resources.getString(R.string.map_url))
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val url = "http://txyminecraft.club:8123/"
         mapwebView.setInitialScale(100)
         mapwebView.settings.textZoom = 200
-        webViewConfig(mapwebView, url)
-        fabConfig(mapfab, url, mapwebView)
+        controllers(mapwebView, mapfab)
     }
 }
