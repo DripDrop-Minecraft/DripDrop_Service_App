@@ -16,8 +16,8 @@ class WikiFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        androidViewModel = WikiAndroidViewModel(requireActivity().application)
-        viewModelConfig(R.string.wiki_name, resources.getString(R.string.wiki_url))
+        setSPImpl(R.string.wiki_name)
+        setUrl(resources.getString(R.string.wiki_url))
         return inflater.inflate(R.layout.fragment_wiki, container, false)
     }
 

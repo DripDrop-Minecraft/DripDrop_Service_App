@@ -14,8 +14,8 @@ class WebFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        androidViewModel = WebAndroidViewModel(requireActivity().application)
-        viewModelConfig(R.string.web_name, resources.getString(R.string.web_url))
+        setSPImpl(R.string.web_name)
+        setUrl(resources.getString(R.string.web_url))
         return inflater.inflate(R.layout.fragment_web, container, false)
     }
 

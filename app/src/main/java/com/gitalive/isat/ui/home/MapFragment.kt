@@ -15,8 +15,8 @@ class MapFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        androidViewModel = MapAndroidViewModel(requireActivity().application)
-        viewModelConfig(R.string.map_name, resources.getString(R.string.map_url))
+        setSPImpl(R.string.map_name)
+        setUrl(resources.getString(R.string.map_url))
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
 

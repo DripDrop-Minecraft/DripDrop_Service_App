@@ -2,6 +2,7 @@ package com.gitalive.isat
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.webkit.WebSettings
 import android.webkit.WebView
@@ -14,7 +15,9 @@ import kotlinx.android.synthetic.main.fragment_map.*
 
 open class BaseFragment : Fragment() {
     private lateinit var wb: WebView
-    protected lateinit var androidViewModel: BaseAndroidViewModel
+    private lateinit var shp: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
+    private lateinit var mUrl: String
 
     @SuppressLint("SetJavaScriptEnabled")
     protected fun webViewConfig(webView: WebView) {
@@ -26,15 +29,21 @@ open class BaseFragment : Fragment() {
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 view?.loadUrl(url)
-                url?.let { androidViewModel.setUrl(it) }
                 return true
             }
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 Toast.makeText(context, "页面加载中，请稍候", Toast.LENGTH_SHORT).show()
             }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                url?.let {
+                    editor.putString("url", it)
+                    editor.apply()
+                }
+            }
         }
-        androidViewModel.getUrl()?.let { webView.loadUrl(it) }
+        getUrl()?.let { webView.loadUrl(it) }
     }
 
     private fun fabConfig(fab: FloatingActionButton) {
@@ -44,7 +53,7 @@ open class BaseFragment : Fragment() {
                 context?.cacheDir?.deleteRecursively()
                 context?.externalCacheDir?.deleteRecursively()
             }
-            androidViewModel.getUrl()?.let { wb.loadUrl(it) }
+            getUrl()?.let { wb.loadUrl(it) }
         }
     }
 
@@ -60,12 +69,25 @@ open class BaseFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
-    protected fun viewModelConfig(name: Int, url: String) {
-        androidViewModel.setSPImpl(name).setUrl(url)
-    }
-
     protected fun controllers(webView: WebView, fab: FloatingActionButton) {
         webViewConfig(webView)
         fabConfig(fab)
+    }
+
+    protected fun setSPImpl(name: Int) {
+        shp = requireActivity().getSharedPreferences(
+            context?.resources?.getString(name),
+            Context.MODE_PRIVATE
+        )
+        editor = shp.edit()
+        editor.apply()
+    }
+
+    protected fun setUrl(url: String) {
+        mUrl = url
+    }
+
+    private fun getUrl(): String? {
+        return shp.getString("url", mUrl)
     }
 }

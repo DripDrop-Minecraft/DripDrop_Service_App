@@ -15,8 +15,8 @@ class GalleryFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        androidViewModel = BBSAndroidViewModel(requireActivity().application)
-        viewModelConfig(R.string.bbs_name, resources.getString(R.string.bbs_url))
+        setSPImpl(R.string.bbs_name)
+        setUrl(resources.getString(R.string.bbs_url))
         return inflater.inflate(R.layout.fragment_bbs, container, false)
     }
 
