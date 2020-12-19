@@ -48,12 +48,16 @@ open class BaseFragment : Fragment() {
 
     private fun fabConfig(fab: FloatingActionButton) {
         fab.setOnClickListener {
-            Toast.makeText(context, "页面已刷新", Toast.LENGTH_LONG).show()
-            if (wb == mapwebView) {
-                context?.cacheDir?.deleteRecursively()
-                context?.externalCacheDir?.deleteRecursively()
-            }
+            Toast.makeText(context, "页面已刷新", Toast.LENGTH_SHORT).show()
             getUrl()?.let { wb.loadUrl(it) }
+        }
+
+        fab.setOnLongClickListener {
+            context?.cacheDir?.deleteRecursively()
+            context?.externalCacheDir?.deleteRecursively()
+            Toast.makeText(context, "正在返回主页", Toast.LENGTH_SHORT).show()
+            wb.loadUrl(mUrl)
+            return@setOnLongClickListener true
         }
     }
 
