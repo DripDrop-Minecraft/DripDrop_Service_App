@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply from: 'tinker-support.gradle'
 
 android {
     compileSdkVersion 30
@@ -12,6 +13,8 @@ android {
         targetSdkVersion 30
         versionCode 400
         versionName "4.0.0"
+        aaptOptions.cruncherEnabled = false
+        aaptOptions.useNewCruncher = false
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,6 +41,9 @@ android {
 }
 
 dependencies {
+    // Tencent Bugly
+    implementation "com.tencent.tinker:tinker-android-lib:1.9.14.5"
+    implementation "com.tencent.bugly:crashreport_upgrade:1.5.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

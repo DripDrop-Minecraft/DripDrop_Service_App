@@ -1,7 +1,11 @@
 package com.gitalive.isat
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -32,10 +36,39 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
+        permissionAccess()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    private fun permissionAccess() {
+        val pmsInt =
+            ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.INTERNET)
+        val pmsANS = ContextCompat.checkSelfPermission(
+            applicationContext,
+            Manifest.permission.ACCESS_NETWORK_STATE
+        )
+        val pmsAWS = ContextCompat.checkSelfPermission(
+            applicationContext,
+            Manifest.permission.ACCESS_WIFI_STATE
+        )
+        val pmsWES = ContextCompat.checkSelfPermission(
+            applicationContext,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        if (pmsInt != PackageManager.PERMISSION_GRANTED ||
+            pmsANS != PackageManager.PERMISSION_GRANTED ||
+            pmsAWS != PackageManager.PERMISSION_GRANTED ||
+            pmsWES != PackageManager.PERMISSION_GRANTED
+        ) {
+            val access = arrayOf(
+                Manifest.permission.INTERNET, Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.ACCESS_WIFI_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+            ActivityCompat.requestPermissions(this, access, 0) //若没有权限则申请授权
+        }
     }
 
 }
