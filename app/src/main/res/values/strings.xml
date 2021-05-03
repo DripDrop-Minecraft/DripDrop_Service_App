@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ISaT</string>
+    <string name="app_name">DripDrop</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -9,15 +9,14 @@
     <string name="menu_wiki">游戏维基</string>
     <string name="menu_web">问答服务</string>
     <string name="menu_about">关于应用</string>
-    <string name="author">App Made by Git-a-Live</string>
-    <string name="logo">Logo Designed by Mort</string>
-    <string name="version">Version: 3.1.11</string>
+    <string name="author">Developed by Dell_G3</string>
+    <string name="version">Version: 4.0.0_20210503</string>
     <string name="extend">extend</string>
-    <string name="update_message">1.移除必应搜索；\n2.加入物品维基；\n3.修复部分bug。</string>
+    <string name="update_message">1.修改应用架构和UI；\n2.更新服务器维基地址；\n3.修复bug，调整执行逻辑。</string>
 
     <string name="bbs_url">https://www.mcbbs.net/</string>
     <string name="map_url">http://txyminecraft.club:8123/</string>
-    <string name="web_url">http://neverlag.gitee.io/minecraft-wiki/#/</string>
+    <string name="web_url">https://git-a-live.github.io/mc_server_wiki.github.io/#/</string>
     <string name="wiki_url">https://minecraft-zh.gamepedia.com/Minecraft_Wiki</string>
     <string name="bbs_name">BBS</string>
     <string name="map_name">Map</string>

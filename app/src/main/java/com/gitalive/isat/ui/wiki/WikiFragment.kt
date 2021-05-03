@@ -1,29 +1,28 @@
 package com.gitalive.isat.ui.wiki
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gitalive.isat.BaseFragment
 import com.gitalive.isat.R
-import kotlinx.android.synthetic.main.fragment_wiki.*
+import com.gitalive.isat.databinding.FragmentWikiBinding
 
 class WikiFragment : BaseFragment() {
-
+    private lateinit var binding: FragmentWikiBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         setSPImpl(R.string.wiki_name)
-        setUrl(resources.getString(R.string.wiki_url))
-        return inflater.inflate(R.layout.fragment_wiki, container, false)
+        mUrl = resources.getString(R.string.wiki_url)
+        binding = FragmentWikiBinding.inflate(inflater)
+        return binding.root
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        controllers(wikiwebView, wikifab)
+        controllerConfig(binding.wikiView)
     }
 }
