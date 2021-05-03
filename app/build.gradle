@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply from: 'tinker-support.gradle'
 
 android {
     compileSdkVersion 30
@@ -9,7 +8,7 @@ android {
     android.buildFeatures.viewBinding = true
     defaultConfig {
         applicationId "com.gitalive.dripdrop"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 400
         versionName "4.0.0"
@@ -21,6 +20,7 @@ android {
 
     buildTypes {
         release {
+            debuggable true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -41,10 +41,6 @@ android {
 }
 
 dependencies {
-    // Tencent Bugly
-    implementation "com.tencent.tinker:tinker-android-lib:1.9.14.5"
-    implementation "com.tencent.bugly:crashreport_upgrade:1.5.0"
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'

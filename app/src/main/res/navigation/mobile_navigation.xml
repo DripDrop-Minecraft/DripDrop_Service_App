@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.gitalive.isat.ui.bbs.GalleryFragment"
+        android:name="com.gitalive.isat.ui.bbs.BBSFragment"
         android:label="@string/menu_bbs"
         tools:layout="@layout/fragment_bbs" />
 

@@ -15,13 +15,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_map.*
 
 open class BaseFragment : Fragment() {
-    lateinit var wb: WebView
+    private lateinit var wb: WebView
     private lateinit var shp: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
+    private var isQuit = false
     lateinit var mUrl: String
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun webViewConfig(webView: WebView) {
+        wb = webView
         webView.apply {
             settings.apply {
                 cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
@@ -56,7 +58,7 @@ open class BaseFragment : Fragment() {
     private fun fabConfig(fab: FloatingActionButton, webView: WebView) {
         fab.apply {
             setOnClickListener {
-                shp.getString("url", mUrl)?.let { wb.loadUrl(it) }
+                shp.getString("url", mUrl)?.let { webView.loadUrl(it) }
             }
             setOnLongClickListener {
                 webView.loadUrl(mUrl)
@@ -67,14 +69,23 @@ open class BaseFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if (wb.canGoBack()) {
-                    wb.goBack()
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (wb.canGoBack()) {
+                        wb.goBack()
+                    } else {
+                        if (!isQuit) {
+                            Toast.makeText(requireContext(), "再执行一次返回操作即可退出应用", Toast.LENGTH_SHORT)
+                                .show()
+                            isQuit = true
+                        } else {
+                            requireActivity().finish()
+                        }
+                    }
                 }
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+            })
     }
 
     fun controllerConfig(fabWebView: FabWebView) {

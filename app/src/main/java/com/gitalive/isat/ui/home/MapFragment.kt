@@ -11,6 +11,7 @@ import com.gitalive.isat.databinding.FragmentMapBinding
 
 class MapFragment : BaseFragment() {
     private lateinit var binding: FragmentMapBinding
+    private var isQuit = false
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
